@@ -1,11 +1,13 @@
 import texts from "../../../plugins/Texts/texts";
-import { Container } from "./_styles/HeaderStyles";
+import { Container, Wrapper } from "./_styles/HeaderStyles";
 
 const Header = () => {
   return (
     <Container>
-      <h1>{texts.headerTitle}</h1>
-      <p>Cart:1</p>
+      <Wrapper>
+        <h1>{texts.headerTitle}</h1>
+        <p>Cart:1</p>
+      </Wrapper>
     </Container>
   );
 };

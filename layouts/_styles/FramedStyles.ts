@@ -1,14 +1,19 @@
 import styled from "@emotion/styled";
-import { DEFAULT_SIDE_PADDING } from "../../styles/consts";
+import { DEFAULT_SIDE_PADDING, MAX_WDITH } from "../../styles/consts";
 
 export const Container = styled.div`
   display: flex;
   flex-flow: column;
-  width: 100vw;
 `;
 
 export const Body = styled.div`
-  padding: 1rem ${DEFAULT_SIDE_PADDING} 1rem ${DEFAULT_SIDE_PADDING};
   display: flex;
-  flex-flow: column;
+  padding: 1rem ${DEFAULT_SIDE_PADDING};
+  margin-bottom: 2rem;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  max-width: ${MAX_WDITH};
+  margin: 0 auto;
 `;
