@@ -7,23 +7,23 @@ type Props = {
   products: Product[];
 };
 
-export default function ProductsListPage({ products }: Props) {
-  return (
-    <Framed>
-      <Grid container spacing={2}>
-        {products.map(({ id, title, price, image }) => (
-          <ProductCard
-            key={id}
-            id={id}
-            title={title}
-            price={price}
-            image={image}
-          />
-        ))}
-      </Grid>
-    </Framed>
-  );
-}
+const ProductsListPage = ({ products }: Props) => (
+  <Framed>
+    <Grid container spacing={2}>
+      {products.map(({ id, title, price, image }) => (
+        <ProductCard
+          key={id}
+          id={id}
+          title={title}
+          price={price}
+          image={image}
+        />
+      ))}
+    </Grid>
+  </Framed>
+);
+
+export default ProductsListPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const jsonData = await fetch("https://fakestoreapi.com/products");
