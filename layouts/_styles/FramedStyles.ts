@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { DEFAULT_SIDE_PADDING } from "../../theme/consts";
 
 export const Container = styled.div`
