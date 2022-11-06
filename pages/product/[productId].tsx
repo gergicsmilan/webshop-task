@@ -3,12 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Framed from "../../layouts/Framed";
 import paths from "../../route/paths";
+import useShoppingCartSlice from "../../store/hooks/useShoppingCartSlice";
 
 type Props = {
   product: Product;
 };
 
 const ProductDetailsPage = ({ product }: Props) => {
+  const { addProductToCart } = useShoppingCartSlice();
+
   return (
     <Framed>
       <Link href={paths.productsList}>Products List</Link>
@@ -16,6 +19,9 @@ const ProductDetailsPage = ({ product }: Props) => {
       <h2>{product.category}</h2>
       <p>{product.description}</p>
       <Image src={product.image} alt="product_img" width={100} height={100} />
+      <button onClick={() => addProductToCart(product)}>
+        Add item to cart
+      </button>
     </Framed>
   );
 };
