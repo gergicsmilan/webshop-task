@@ -1,9 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import NavButton from "../../components/Buttons/NavButton";
+import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import Framed from "../../layouts/Framed";
+import texts from "../../plugins/Texts/texts";
 import paths from "../../route/paths";
 import useShoppingCartSlice from "../../store/hooks/useShoppingCartSlice";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import {
+  DetailsContainer,
+  ImgWrapper,
+  InfoWrapper,
+} from "../../styles/pages/ProductDetailsPageStyles";
 
 type Props = {
   product: Product;
@@ -14,14 +22,30 @@ const ProductDetailsPage = ({ product }: Props) => {
 
   return (
     <Framed>
-      <Link href={paths.productsList}>Products List</Link>
-      <h1>{product.title}</h1>
-      <h2>{product.category}</h2>
-      <p>{product.description}</p>
-      <Image src={product.image} alt="product_img" width={100} height={100} />
-      <button onClick={() => addProductToCart(product)}>
-        Add item to cart
-      </button>
+      <NavButton
+        path={paths.productsList}
+        text={texts.navToProductsList}
+        startIcon={<ArrowBackIosIcon />}
+      />
+      <DetailsContainer>
+        <ImgWrapper>
+          <Image
+            src={product.image}
+            alt="product_img"
+            width={180}
+            height={220}
+          />
+        </ImgWrapper>
+        <InfoWrapper>
+          <h1>{product.title}</h1>
+          <h2>{product.category}</h2>
+          <p>{product.description}</p>
+          <PrimaryButton
+            text={texts.addToCart}
+            clickHandler={() => addProductToCart(product)}
+          />
+        </InfoWrapper>
+      </DetailsContainer>
     </Framed>
   );
 };
