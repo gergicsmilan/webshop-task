@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { DEFAULT_SIDE_PADDING } from "../../../../theme/consts";
+import { DEFAULT_SIDE_PADDING } from "../../../../styles/consts";
 
 export const Container = styled.div`
   display: flex;
