@@ -4,6 +4,19 @@ import { BORDER_RADIUS } from "../consts";
 export const DetailsContainer = styled.div`
   display: flex;
   margin: 2rem 0;
+
+  @media only screen and (max-width: 600px) {
+    flex-flow: column;
+    align-items: center;
+
+    img {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const InfoWrapper = styled.div`
