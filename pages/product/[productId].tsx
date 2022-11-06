@@ -12,6 +12,7 @@ import {
   ImgWrapper,
   InfoWrapper,
 } from "../../styles/pages/ProductDetailsPageStyles";
+import { getProductById, getProducts } from "../../plugins/ApiService/get";
 
 type Props = {
   product: Product;
@@ -54,20 +55,14 @@ export default ProductDetailsPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const productId = context.params?.productId;
-  const jsonData = await fetch(
-    `https://fakestoreapi.com/products/${productId} `
-  );
-  const product: Product = await jsonData.json();
-
+  const product = await getProductById(productId);
   return { props: { product: product } };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const jsonData = await fetch("https://fakestoreapi.com/products");
-  const products: Product[] = await jsonData.json();
+  const products = await getProducts();
   const params = products.map((p) => ({
     params: { productId: p.id.toString() },
   }));
-
   return { paths: params, fallback: false };
 };

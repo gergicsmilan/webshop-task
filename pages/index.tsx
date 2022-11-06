@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import { GetStaticProps } from "next";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Framed from "../layouts/Framed";
+import { getProducts } from "../plugins/ApiService/get";
 
 type Props = {
   products: Product[];
@@ -26,7 +27,6 @@ const ProductsListPage = ({ products }: Props) => (
 export default ProductsListPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const jsonData = await fetch("https://fakestoreapi.com/products");
-  const products: Product[] = await jsonData.json();
+  const products = await getProducts();
   return { props: { products: products } };
 };
