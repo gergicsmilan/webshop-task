@@ -1,3 +1,5 @@
+import Framed from "../layouts/Framed";
+
 export default function ProductsListPage() {
-  return <div>Products</div>;
+  return <Framed>Products</Framed>;
 }
